@@ -11,30 +11,29 @@
 
 			<!-- Линия 3 -->
 			<div class="absolute w-64 h-32 ml-[370px] mt-44" v-show="showLine3">
-				<div class="absolute inset-0 border-t-2 border-blue-500 border-dotted rotate-30"></div>
+				<div class="absolute inset-0 border-t-2 border-gray-600 border-dotted rotate-30"></div>
 			</div>
 			<!-- Линия 1  -->
-			<div class="absolute w-64 h-32 ml-[700px] mb-24" v-show="showLine1">
-				<div class="absolute inset-0 border-t-2 border-blue-500 border-dotted rotate-40 two"></div>
+			<div class="absolute w-[210px] h-32 ml-[700px] mb-[110px]" v-show="showLine1">
+				<div class="absolute inset-0 border-t-2 border-gray-600 border-dotted rotate-40 two"></div>
 			</div>
 			<!-- Линия 2 -->
 			<div class="absolute w-64 h-32 ml-[770px] mb-24" v-show="showLine2">
-				<div class="absolute inset-0 border-t-2 border-blue-500 border-dotted rotate-50 sec"></div>
+				<div class="absolute inset-0 border-t-2 border-gray-600 border-dotted rotate-50 sec"></div>
 			</div>
 			<!-- Линия 4  -->
-			<div class="absolute w-32 h-32 ml-[500px] mt-[130px]" v-show="showLine4">
-				<div class="absolute inset-0 border-t-2 border-blue-500 border-dotted rotate-50 four"></div>
+			<div class="absolute w-36 h-32 ml-[550px] mt-[130px]" v-show="showLine4">
+				<div class="absolute inset-0 border-t-2 border-gray-600 border-dotted rotate-50 four"></div>
 			</div>
 			<!-- Линия 5  -->
 			<div class="absolute w-32 h-32 left-[380px] mb-24" v-show="showLine5">
-				<div class="absolute inset-0 border-t-2 border-blue-500 border-dotted rotate-50 rec"></div>
+				<div class="absolute inset-0 border-t-2 border-gray-600 border-dotted rotate-50 rec"></div>
 			</div>
 			<!-- Линия 6  -->
 			<div class="absolute w-32 h-32 left-[700px] mt-36" v-show="showLine6">
-				<div class="absolute inset-0 border-t-2 border-blue-500 border-dotted rotate-50 tec"></div>
+				<div class="absolute inset-0 border-t-2 border-gray-600 border-dotted rotate-50 tec"></div>
 			</div>
 
-			
 			<div class="flex flex-col items-center gap-16">
 				<img src="/2.png" alt="" @mouseover="showLine(6)" @mouseleave="hideLine(6)">
 				<div class="w-12 h-12 flex items-center justify-center border border-gray-300 text-gray-500 text-lg rounded-full">
@@ -44,11 +43,20 @@
 
 			<div class="flex gap-32">
 				<img src="/smn.png" alt="" @mouseover="showLine(4)" @mouseleave="hideLine(4)">
-				<img src="/road.png" alt="">
+				<img src="/xroad.png" alt=""
+					@mouseover="showLine(1); showLine(2); showLine(3); showLine(4); showInfo('road')"
+					@mouseleave="hideLine(1); hideLine(2); hideLine(3); hideLine(4); hideInfo('road')" class="w-32 h-24">
 			</div>
 
 			
-			<img src="/bpr.png" alt="" class="w-24 h-24 mb-64 absolute right-[470px]"
+			<div class="absolute right-[620px] top-[450px] bg-gray-100 p-4 rounded shadow-lg" v-show="showRoadInfo">
+				<div class="flex flex-col bg-gray-50 p-4 rounded-lg shadow-md w-64">
+					<p class="text-gray-800 font-semibold text-lg mb-2">xRoad Information</p>
+					<p class="text-gray-600">log time stamp</p>
+				</div>
+			</div>
+
+			<img src="/bpr.png" alt="" class="w-24 h-24 mb-64 absolute right-[455px]"
 				@mouseover="showLine(1); showInfo('bpr')" @mouseleave="hideLine(1); hideInfo('bpr')">
 			<div class="absolute right-[470px] top-[40px] bg-gray-100 p-4 rounded shadow-lg" v-show="showBprInfo">
 				<div class="flex flex-col bg-gray-50 p-4 rounded-lg shadow-md w-64">
@@ -57,7 +65,6 @@
 				</div>
 			</div>
 
-			
 			<img src="/geo.png" alt="" class="absolute right-[470px] mt-64"
 				@mouseover="showLine(3); showInfo('geo')" @mouseleave="hideLine(3); hideInfo('geo')">
 			<div class="absolute right-[470px] top-[570px] bg-gray-100 p-4 rounded shadow-lg" v-show="showGeoInfo">
@@ -66,12 +73,10 @@
 
 			<p class="absolute font-bold text-xl right-[440px] mt-[350px]">Գեոպորտալ</p>
 
-			
 			<p class="w-12 h-12 flex items-center justify-center border border-gray-300 text-gray-500 text-lg rounded-full absolute right-[480px] mt-[590px]">
 				3
 			</p>
 
-			
 			<div class="flex flex-col items-center gap-16">
 				<img src="/4.png" alt="" @mouseover="showInfo('four')" @mouseleave="hideInfo('four')">
 				<div class="w-12 h-12 flex items-center justify-center border border-green-500 text-green-500 text-lg rounded-full">
@@ -104,7 +109,8 @@ export default {
 			showLine6: false,
 			showBprInfo: false,
 			showGeoInfo: false,
-			showFourInfo: false
+			showFourInfo: false,
+			showRoadInfo: false // New data property for Road info box
 		};
 	},
 	methods: {
@@ -155,4 +161,5 @@ export default {
 	transform-origin: top left;
 }
 </style>
+
 
